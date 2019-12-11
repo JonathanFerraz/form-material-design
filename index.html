@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Material Design form input</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery.material.form.css">
+</head>
+
+<body>
+
+	<form action="" class="material" autocomplete="anyrandomstring">
+		<input type="text" name="name" placeholder="Name" autocomplete="false">
+		<label id="name-error" class="error" for="name"></label>
+		<input id="cpf" type="text" name="cpf" placeholder="CPF">
+		<label id="name-error" class="error" for="cpf"></label>
+		<input type="email" name="email" placeholder="E-mail" required>
+		<label id="email-error" class="error" for="email"></label>
+		<textarea name="message" placeholder="Message"></textarea>
+		<footer class="material-footer">
+				<input type="radio" name="gender" value="true" placeholder="Verdadeiro">
+				<input type="checkbox" name="check[]" value="1" placeholder="Opção 1">
+				<br>
+    <button class="material-btn-raised ripple" data-ripple-color="#fff">Raised </button>
+    <button class="material-btn-outline ripple" data-ripple-color="rgba(0, 0, 0, 0.12)">Outline </button>
+   </div>
+  </footer>
+	</form>
+	<!-- JQUERY -->
+	<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script> 
+	<!-- JQUERY VALIDATOR (Adicional) -->
+	<script type="text/javascript" src="js/jquery.validate.min.js"></script> 
+	<!-- JQUERY MATERIAL FORM PLUGIN -->
+	<script type="text/javascript" src="js/jquery.material.form.js"></script>
+
+	<script type="text/javascript">
+		$(function () {
+			$('form.material').materialForm();
+			$('#cpf').mask('000.000.000-00') // Aplicando material design
+			$('form').validate({
+				rules: {
+					name: {
+						required: true,
+						minlength: 3,
+						letters: true,
+						number: false,
+					},
+					cpf: {
+						required: true,
+						minlength: 14,
+					},
+					email: {
+						required: true,
+						email: true
+					}
+				},
+				messages: {
+					name: "Precisamos do seu nome completo",
+					cpf: "Precisamos de um CPF válido",
+					email: "Precisamos de um email válido"
+				},
+			}); // Aplicar validação
+		});
+	</script>
+
+</body>
+
+</html>
